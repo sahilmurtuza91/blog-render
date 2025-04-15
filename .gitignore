@@ -1,0 +1,17 @@
+# Ignore virtual environment
+s1env/
+
+# Ignore config file with credentials
+config.json
+.env
+*.env
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# IDE and OS junk
+.vscode/
+.DS_Store
+Thumbs.db

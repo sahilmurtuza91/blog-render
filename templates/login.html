@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Admin panel</title>
+        <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='assets/favicon.ico')}}" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet" />
+    </head>
+    <body>
+        <style type="text/css">
+            .padded{
+                padding-left: 450px;
+                padding-right: 450px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: aliceblue;
+            }
+        </style>
+        <div class="bg-body-tertiary padded">
+            <main class="form-signin w-100 m-auto">
+                <form action="/dashbord" method="POST">
+                    <img class="mb-4 d-block mx-auto" src="{{url_for('static',filename='assets/img/logo[1].ico')}}" alt="" width="130" height="100">
+                    <h1 label class="form-check-label mb-3 text-center d-block" style="font-size: 1.5rem;">Admin login</h1>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="uname" name="uname" placeholder="user name">
+                        <label for="uname">user name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                        <label for="pass">Password</label>
+                    </div>
+                    <div class="form-check d-flex justify-content-center align-items-center my-3">
+                        <input class="form-check-input" type="checkbox" value="remember-me" id="checkDefault" style="margin-right: 0.5rem;">
+                        <label class="form-check-label" for="checkDefault">Remember me</label>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                    <p class="mt-5 mb-3 text-body-secondary">&copy; {{params["blog_name"]}} 2025–2030</p>
+                </form>
+            </main>
+            <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"></script>
+        </div>
+    </body>
+</html>

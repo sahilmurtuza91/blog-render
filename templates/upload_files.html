@@ -1,0 +1,59 @@
+
+{% extends "layout.html" %}
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{url_for('static',filename='assets/img/uplode_file_img.webp')}}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>upload_files</h1>
+                            <span class="subheading">user uploaded Files</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                     <!-- todo it whith the for loop-->
+                     
+                      <h1>Uploaded file</h1>
+
+              <hr>
+                    <table class="table" style="border:1px solid black">
+                        <thead>
+                          <tr style="border:1px solid black">
+                            <th style="border:1px solid black">Sno</th>
+                            <th style="border:1px solid black">Files</th>
+                            <th style="border:1px solid black">Date</th>
+                            <th style="border:1px solid black">Action</th>
+                          </tr>
+                        </thead>
+                
+                        {% for file in myfiles %}
+                        <tbody>
+                          <tr>
+                            <td style="border:1px solid black">{{file.sno}}</td>
+                            <td style="border:1px solid black">{{file.upload_files}}</td>
+                            <td style="border:1px solid black">{{file.date}}</td>
+                            <td> <a href="{{ url_for('static', filename='assets/upload_img/' ~ file.upload_files) }}" target="_blank">
+                                <button class="btn btn-primary">Open</button></td>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                    
+                     
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Pager-->
+
+                      
+
+                </div>
+            </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block body %}
+<header class="masthead" style="background-image: url('{{url_for('static',filename='assets/img/admin.jpg')}}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                    <span class="subheading">Manage your post and change them</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <a href="/dashbord"><button class="btn btn-primary">Dashbord Home</button></a>
+            <a href="/logout"><button class="btn btn-primary">logout</button></a>              
+            <h1>Add/Edit Post</h1>
+            <form id="contactForm" action="/edit/{{post.sno}}" method="post" data-sb-form-api-token="API_TOKEN">
+                <div class="form-floating">
+                    <input class="form-control" id="title" type="text" placeholder="Title" name="title" data-sb-validations="required" value="{{post.title}}" />
+                    <label for="title">Title</label>
+                    <div class="invalid-feedback" data-sb-feedback="name:required">A title is required.</div>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="tline" type="text" placeholder="Tagline" name="tline" data-sb-validations="required,email" value="{{post.tagline}}" />
+                    <label for="tline">Tagline</label>
+                    <div class="invalid-feedback" data-sb-feedback="tagline:required">A tagline is required.</div>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="slug" type="text" placeholder="Slug" name="slug" data-sb-validations="required" value="{{post.slug}}" />
+                    <label for="slug">Slug</label>
+                    <div class="invalid-feedback" data-sb-feedback="slug:required">A slug is required.</div>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" id="content" placeholder="Content" style="height: 12rem" name="content" data-sb-validations="required">{{post.content}}</textarea>
+                    <label for="content">Content</label>
+                    <div class="invalid-feedback" data-sb-feedback="content:required">A content is required.</div>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" id="img_file" type="text" placeholder="Image_file" name="img_file" data-sb-validations="required" value="{{post.img_file}}" />
+                    <label for="img_file">Image_file</label>
+                    <div class="invalid-feedback" data-sb-feedback="slug:required">A slug is required.</div>
+                </div>
+                <br />
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center mb-3">
+                        <div class="fw-bolder">Form submission successful!</div>
+                        To activate this form, sign up at
+                        <br />
+                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                    </div>
+                </div>
+                <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                </div>
+                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Submit</button>
+            </form>
+            <hr class="my-4" />
+        </div>
+    </div>
+</div>
+{% endblock %}

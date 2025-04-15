@@ -1,0 +1,89 @@
+{% extends "layout.html" %}  {# Inherits base layout #}
+{% block body %}
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/admin.jpg') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                    <span class="subheading">Manage your post and change them</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+            <h1>Basic Action</h1>
+            <a href="/edit/0"><button class="btn btn-primary">Add New Post</button></a>
+            <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+
+            <hr>
+
+            <h1>Upload a File</h1>
+            <form action="/uploder" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file1">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <hr>
+
+            <h1>Edit Post</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                {% for post in posts %}
+                <tbody>
+                    <tr>
+                        <td>{{ post.sno }}</td>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.date }}</td>
+                        <td><a href="/edit/{{ post.sno }}"><button class="btn btn-primary">Edit</button></a></td>
+                        <td><a href="/delete_post/{{ post.sno }}"><button class="btn btn-primary">Delete</button></a></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <hr><hr>
+
+            <h1>Uploaded Files</h1>
+            <table class="table" style="border:1px solid black">
+                <thead>
+                    <tr style="border:1px solid black">
+                        <th style="border:1px solid black">Sno</th>
+                        <th style="border:1px solid black">Files</th>
+                        <th style="border:1px solid black">Date</th>
+                        <th style="border:1px solid black">Action</th>
+                    </tr>
+                </thead>
+                {% for file in myfiles %}
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid black">{{ file.sno }}</td>
+                        <td style="border:1px solid black">{{ file.upload_files }}</td>
+                        <td style="border:1px solid black">{{ file.date }}</td>
+                        <td><a href="/delete_file/{{ file.sno }}"><button class="btn btn-primary">Delete</button></a></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <hr class="my-4" />
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
