@@ -12,11 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Load parameters from config.json
-if os.path.exists("config.json"):
-    with open("config.json", "r") as c:
-        params = json.load(c)["params"]
-
-local_server = params.get("local_server") == "True"
+local_server = os.getenv("local_server", "true").lower() == "true"
 
 # Initialize Flask
 app = Flask(__name__)
